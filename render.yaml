@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: connect4-ai-arena-api
+    runtime: python
+    plan: free
+    region: singapore
+    branch: main
+    healthCheckPath: /api/health
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend -w 1 --threads 100 -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.9"
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: LLM_DAILY_CAP
+        value: "200"
+      - key: LLM_ENABLED
+        value: "1"
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
