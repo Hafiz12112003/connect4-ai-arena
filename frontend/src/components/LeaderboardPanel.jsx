@@ -246,7 +246,7 @@ export default function LeaderboardPanel({ arena, span }) {
           player and lost all 100 as second. Both sides play almost the same way every time, so many games
           repeat (7 and 14 different games out of 100 per colour in that match-up) and these results are
           less certain than the game counts suggest. Human results count finished games at any difficulty
-          and are kept in a file on the server. This page only reads the saved results. A full run with
+          and are kept in a file on the server, which free hosting erases when it restarts or goes to sleep, so this row can reset. This page only reads the saved results. A full run with
           the LLM takes hours, so it is never re-run here.
         </p>
       </>
