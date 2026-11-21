@@ -1,0 +1,139 @@
+﻿@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+:root,
+[data-theme="dark"] {
+  --page: #0a0d16;
+  --panel: #111626;
+  --panel-2: #161c31;
+  --line: #1e2742;
+  --ink: #e8ecf8;
+  --muted: #8e98bb;
+  --human: #ffb347;
+  --ai: #3ef0d0;
+  --danger: #ff6b6b;
+  --board-from: #17306b;
+  --board-to: #0e1d45;
+  --board-glow: rgba(90, 140, 255, 0.35);
+  --glow-a: rgba(255, 179, 71, 0.10);
+  --glow-b: rgba(62, 240, 208, 0.10);
+  --glow-c: rgba(80, 110, 255, 0.10);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --page: #f3f5fb;
+  --panel: #ffffff;
+  --panel-2: #eef1fa;
+  --line: #d9dfef;
+  --ink: #0f1530;
+  --muted: #4d5880;
+  --human: #b86e00;
+  --ai: #00806d;
+  --danger: #c93a3a;
+  --board-from: #17306b;
+  --board-to: #0e1d45;
+  --board-glow: rgba(60, 100, 220, 0.25);
+  --glow-a: rgba(255, 179, 71, 0.18);
+  --glow-b: rgba(62, 240, 208, 0.14);
+  --glow-c: rgba(80, 110, 255, 0.10);
+  color-scheme: light;
+}
+
+/* Lets Tailwind classes like bg-panel, text-ink, border-line use the tokens. */
+@theme inline {
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-human: var(--human);
+  --color-ai: var(--ai);
+  --color-danger: var(--danger);
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Soft colour glows behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 8% -10%, var(--glow-a), transparent 60%),
+    radial-gradient(55rem 40rem at 100% 5%, var(--glow-b), transparent 60%),
+    radial-gradient(50rem 40rem at 50% 110%, var(--glow-c), transparent 60%);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* ---------- Reusable pieces ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.board-surface {
+  background: linear-gradient(160deg, var(--board-from), var(--board-to));
+  box-shadow:
+    inset 0 0 40px var(--board-glow),
+    0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(120, 160, 255, 0.25);
+}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

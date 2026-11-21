@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-11-20T05:29:19+00:00",
+  "checkpoint": "final.pt",
+  "checkpoint_episode": 16500,
+  "games_per_pair": 100,
+  "llm_games_per_pair": 6,
+  "players": [
+    {
+      "name": "Minimax (depth 2)",
+      "kind": "minimax",
+      "wins": 156,
+      "losses": 50,
+      "draws": 0,
+      "games": 206,
+      "win_rate": 0.7573
+    },
+    {
+      "name": "Trained AI",
+      "kind": "ai",
+      "wins": 150,
+      "losses": 56,
+      "draws": 0,
+      "games": 206,
+      "win_rate": 0.7282
+    },
+    {
+      "name": "LLM (gpt-oss-20b)",
+      "kind": "llm",
+      "wins": 6,
+      "losses": 12,
+      "draws": 0,
+      "games": 18,
+      "win_rate": 0.3333
+    },
+    {
+      "name": "Random",
+      "kind": "random",
+      "wins": 6,
+      "losses": 200,
+      "draws": 0,
+      "games": 206,
+      "win_rate": 0.0291
+    }
+  ],
+  "matches": [
+    {
+      "a": "Trained AI",
+      "b": "Minimax (depth 2)",
+      "a_wins": 50,
+      "b_wins": 50,
+      "draws": 0,
+      "games": 100
+    },
+    {
+      "a": "Trained AI",
+      "b": "LLM (gpt-oss-20b)",
+      "a_wins": 5,
+      "b_wins": 1,
+      "draws": 0,
+      "games": 6
+    },
+    {
+      "a": "Trained AI",
+      "b": "Random",
+      "a_wins": 95,
+      "b_wins": 5,
+      "draws": 0,
+      "games": 100
+    },
+    {
+      "a": "Minimax (depth 2)",
+      "b": "LLM (gpt-oss-20b)",
+      "a_wins": 6,
+      "b_wins": 0,
+      "draws": 0,
+      "games": 6
+    },
+    {
+      "a": "Minimax (depth 2)",
+      "b": "Random",
+      "a_wins": 100,
+      "b_wins": 0,
+      "draws": 0,
+      "games": 100
+    },
+    {
+      "a": "LLM (gpt-oss-20b)",
+      "b": "Random",
+      "a_wins": 5,
+      "b_wins": 1,
+      "draws": 0,
+      "games": 6
+    }
+  ],
+  "llm": {
+    "model": "openai/gpt-oss-20b",
+    "calls": 140,
+    "fallbacks": 31,
+    "fallback_rate": 0.2214,
+    "fallback_reasons": {
+      "reply had no column number": 11,
+      "HTTP 429": 20
+    }
+  }
+}
